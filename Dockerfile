@@ -3,7 +3,7 @@
 #  - MariaDB based Database
 # 2019.04.25
 # --------------------------------------------
-FROM mariadb:10.4
+FROM mariadb:10.3.14
 
 ENV MYSQL_ROOT_PASSWORD eberry
 ENV MYSQL_DATABASE REDSPUSH
