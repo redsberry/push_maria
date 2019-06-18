@@ -6,5 +6,5 @@ mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABAS
 mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO ${MYSQL_USER}@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}' WITH GRANT OPTION"
 mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT USAGE ON ${MYSQL_DATABASE}.* TO ${MYSQL_USER}@'%'"
 
-echo "redsPUSH DB all schema import"
-mysql -u root -p$MYSQL_ROOT_PASSWORD < /docker-entrypoint-initdb.d/dbs.import
+#echo "redsPUSH DB all schema import"
+#mysql -u root -p$MYSQL_ROOT_PASSWORD < /docker-entrypoint-initdb.d/dbs.import
