@@ -1,0 +1,36 @@
+-- --------------------------------------------------------
+-- 호스트:                          eberry.co.kr
+-- 서버 버전:                        10.3.11-MariaDB - MariaDB Server
+-- 서버 OS:                        Linux
+-- HeidiSQL 버전:                  10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- 함수 REDSPUSH.GET_MSG_SEND_NO 구조 내보내기
+DELIMITER //
+CREATE DEFINER=`redspush`@`%` FUNCTION `GET_MSG_SEND_NO`(P_TRNS_NO INT) RETURNS int(11)
+BEGIN
+	DECLARE	V_RET_INFO	INT DEFAULT 0;
+	
+	IF EXISTS (	SELECT	SNDMSG_NO
+				FROM	PM_MSGSEND
+				WHERE	TRNS_NO	= P_TRNS_NO) THEN
+		SELECT	SNDMSG_NO
+		INTO	V_RET_INFO
+		FROM	PM_MSGSEND
+		WHERE	TRNS_NO	= P_TRNS_NO;
+	END IF;
+	
+  	RETURN   V_RET_INFO;
+
+END//
+DELIMITER ;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
