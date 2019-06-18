@@ -5,6 +5,10 @@
 # --------------------------------------------
 FROM mariadb:10.3.14
 
+RUN apt-get update && apt-get upgrade && \
+    apt-get install -y \
+	python3 python3-pip
+
 ENV MYSQL_ROOT_PASSWORD eberry
 ENV MYSQL_DATABASE REDSPUSH
 ENV MYSQL_USER redspush

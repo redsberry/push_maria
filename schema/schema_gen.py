@@ -99,6 +99,22 @@ def allow_int_connection(cur, db_tar):
 # database object grant to user
 def grant_to_user(cur, db_tar):
     try:
+        cur.execute("GRANT ALL PRIVILEGES ON {}.* TO {}@'%' IDENTIFIED BY '{}' WITH GRANT OPTION".format(db_tar.DBNAME, db_tar.USER, db_tar.PASSWORD))
+    except pymysql.Error as e:
+        print("Error %d: %s" % (e.args[0],e.args[1]))
+        sys.exit(1)
+    else:
+        print("GRANT command executed!")
+
+    try:
+        cur.execute("GRANT ALL PRIVILEGES ON {}.* TO {}@'localhost' IDENTIFIED BY '{}' WITH GRANT OPTION".format(db_tar.DBNAME, db_tar.USER, db_tar.PASSWORD))
+    except pymysql.Error as e:
+        print("Error %d: %s" % (e.args[0],e.args[1]))
+        sys.exit(1)
+    else:
+        print("GRANT command executed!")
+
+    try:
         cur.execute("GRANT USAGE ON {}.* TO '{}'@'%'".format(db_tar.DBNAME, db_tar.USER))
     except pymysql.Error as e:
         print("Error %d: %s" % (e.args[0],e.args[1]))
