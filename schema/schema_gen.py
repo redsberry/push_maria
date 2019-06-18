@@ -107,7 +107,7 @@ def grant_to_user(cur, db_tar):
         print("GRANT command executed!")
 
     try:
-        cur.execute("GRANT ALL PRIVILEGES ON {}.* TO {}@'localhost' IDENTIFIED BY '{}' WITH GRANT OPTION".format(db_tar.DBNAME, db_tar.USER, db_tar.PASSWORD))
+        cur.execute("GRANT ALL PRIVILEGES ON {}.* TO {}@'localhostdl' IDENTIFIED BY '{}' WITH GRANT OPTION".format(db_tar.DBNAME, db_tar.USER, db_tar.PASSWORD))
     except pymysql.Error as e:
         print("Error %d: %s" % (e.args[0],e.args[1]))
         sys.exit(1)
