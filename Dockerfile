@@ -3,9 +3,9 @@
 #  - MariaDB based Database
 # 2019.04.25
 # --------------------------------------------
-FROM mariadb:10.3.14
+FROM mariadb:10.4.5
 
-RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get -y upgrade
 
 ENV MYSQL_ROOT_PASSWORD eberry
 ENV MYSQL_DATABASE REDSPUSH
