@@ -17,7 +17,7 @@ ENV MYSQL_PASSWORD eberry
 # 최초 db initial file(.sh, .sql, .sql.gz)을 /docker-entrypoint-initdb.d/ 복사하면 컨테이너 생성시 실행한다.
 COPY my.cnf /etc/mysql/my.cnf
 COPY ./schema /docker-entrypoint-initdb.d/
-RUN chmod +x /docker-entrypoint-initdb.d/db_gen.sh
+RUN chmod +x /docker-entrypoint-initdb.d/dbgen.sh
 #RUN python3 /docker-entrypoint-initdb.d/schema_gen.py
 
 #RUN /docker-entrypoint-initdb.d/db_init.sh
