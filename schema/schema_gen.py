@@ -10,6 +10,8 @@ import config
 # Wait for Mariadb starting
 def is_mariadb_running():
     break_point = False
+    print("MariaDB running checking.")
+    time.sleep(3)
     while(1) :
         oscommend = os.popen("ps aux | grep mysqld | grep -v grep | awk '{print $11}'").readlines()
         if break_point: break
