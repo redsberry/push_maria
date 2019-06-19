@@ -13,7 +13,7 @@
 
 -- 프로시저 REDSPUSH.GET_USER_INFO 구조 내보내기
 DELIMITER //
-CREATE DEFINER=`root`@`%` PROCEDURE `GET_USER_INFO`(
+CREATE DEFINER=`redspush`@`%` PROCEDURE `GET_USER_INFO`(
     IN `P_USR_ID`                VARCHAR(80),
     OUT `P_USR_PW`         				VARCHAR(512),
     OUT `P_USR_NM`         				VARCHAR(50),

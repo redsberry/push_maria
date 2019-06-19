@@ -13,7 +13,7 @@
 
 -- 프로시저 REDSPUSH.GET_DEPT_COMBO 구조 내보내기
 DELIMITER //
-CREATE DEFINER=`root`@`%` PROCEDURE `GET_DEPT_COMBO`(
+CREATE DEFINER=`redspush`@`%` PROCEDURE `GET_DEPT_COMBO`(
     IN `P_PROC_ID` VARCHAR(30)     ,
     IN `P_CPNY_NO` INT(10)         ,
     OUT `P_RESULT_ID` INT             ,

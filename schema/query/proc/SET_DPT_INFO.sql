@@ -13,7 +13,7 @@
 
 -- 프로시저 REDSPUSH.SET_DPT_INFO 구조 내보내기
 DELIMITER //
-CREATE DEFINER=`root`@`%` PROCEDURE `SET_DPT_INFO`(
+CREATE DEFINER=`redspush`@`%` PROCEDURE `SET_DPT_INFO`(
   IN `P_PROC_ID`       VARCHAR(30)     ,
   IN `P_CPNY_NO`       INT(10)     ,
   IN `P_DPT_NO`        INT(10)     ,

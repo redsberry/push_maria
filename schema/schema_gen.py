@@ -3,9 +3,25 @@
 
 
 # AFIS Database Create
-import sys, os, re
+import sys, os, time
 import pymysql
 import config
+
+# Wait for Mariadb starting
+def is_mariadb_running():
+    break_point = False
+    while(1) :
+        oscommend = os.popen("ps aux | grep mysqld | grep -v grep | awk '{print $11}'").readlines()
+        if break_point: break
+        for pnm in oscommend:
+            if 'mysqld' in pnm:
+                print("MariaDB is running.")
+                break_point = True
+            else:
+                print("MariaDB is not running.")
+        time.sleep(3)
+            
+    return True
 
 # Database connection function
 def connect_db(dbif):
@@ -107,7 +123,7 @@ def grant_to_user(cur, db_tar):
         print("GRANT command executed!")
 
     try:
-        cur.execute("GRANT ALL PRIVILEGES ON {}.* TO {}@'localhostdl' IDENTIFIED BY '{}' WITH GRANT OPTION".format(db_tar.DBNAME, db_tar.USER, db_tar.PASSWORD))
+        cur.execute("GRANT ALL PRIVILEGES ON {}.* TO {}@'localhost' IDENTIFIED BY '{}' WITH GRANT OPTION".format(db_tar.DBNAME, db_tar.USER, db_tar.PASSWORD))
     except pymysql.Error as e:
         print("Error %d: %s" % (e.args[0],e.args[1]))
         sys.exit(1)
@@ -128,6 +144,9 @@ def grant_to_user(cur, db_tar):
 # =============================================
 db_root = config.Root
 db_redspush = config.RedsPush
+
+# Mariadb가 실행중인지 확인한다.
+is_mariadb_running()
 
 # root사용자로 연결하여 신규 데이터베이스를 생성한다.
 con, cur = connect_db(db_root)          # 01. Database connection 
