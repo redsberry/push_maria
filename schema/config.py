@@ -1,6 +1,6 @@
 # MariaDB connection info.
 class Root:
-    HOST = 'maria'
+    HOST = '127.0.0.1'
     DBNAME = 'mysql'
     USER = 'root'
     PASSWORD = 'eberry'   
@@ -9,7 +9,7 @@ class Root:
     AUTOCOMMIT=True
 
 class RedsPush:
-    HOST = 'maria'
+    HOST = '127.0.0.1'
     DBNAME = 'REDSPUSH'
     USER = 'redspush'
     PASSWORD = 'eberry'   
