@@ -3,9 +3,10 @@
 #  - MariaDB based Database
 # 2019.04.25
 # --------------------------------------------
-FROM mariadb:10.4.5
+#FROM mariadb:10.3.16
+FROM mariadb:10.4.5-bionic
 
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get update
 RUN apt-get -y install python3 python3-pip
 RUN pip3 install pymysql
 
@@ -18,8 +19,8 @@ ENV MYSQL_PASSWORD eberry
 #COPY dbs.import /docker-entrypoint-initdb.d/
 COPY my.cnf /etc/mysql/my.cnf
 COPY ./schema /docker-entrypoint-initdb.d/
-#COPY db_init.sh /docker-entrypoint-initdb.d/
-#RUN chmod +x /docker-entrypoint-initdb.d/db_init.sh
+COPY db_init.sh /docker-entrypoint-initdb.d/
+RUN chmod +x /docker-entrypoint-initdb.d/db_init.sh
 WORKDIR /docker-entrypoint-initdb.d
 
 #RUN /docker-entrypoint-initdb.d/db_init.sh
