@@ -13,6 +13,10 @@ ENV MYSQL_PASSWORD eberry
 # 최초 db initial file(.sh, .sql, .sql.gz)을 /docker-entrypoint-initdb.d/ 복사하면 컨테이너 생성시 실행한다.
 COPY my.cnf /etc/mysql/my.cnf
 
+# TimeZone 설정
+ENV TZ Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone
+
 #RUN /docker-entrypoint-initdb.d/db_init.sh
 # docker run 시 mysql data file을 위치를 호스트의 디렉토리로 맵핑한다.
 # -v /storage/mysql2/mysql-datadir:/var/lib/mysql
