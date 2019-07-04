@@ -14,8 +14,6 @@ ENV MYSQL_PASSWORD eberry
 COPY my.cnf /etc/mysql/my.cnf
 
 # TimeZone 설정
-ENV TZ Asia/Seoul
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone
 
 #RUN /docker-entrypoint-initdb.d/db_init.sh
 # docker run 시 mysql data file을 위치를 호스트의 디렉토리로 맵핑한다.
